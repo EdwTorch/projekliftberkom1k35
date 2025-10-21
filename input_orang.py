@@ -21,12 +21,9 @@ while i < N:
 while total_berat > 650:
     print(f"\nTotal berat {total_berat} kg melebihi kapasitas 650 kg.")
     print(f"Orang ke-{N} dengan berat {list_berat[N-1]} kg dikeluarkan.")
-    total_berat = total_berat - list_berat[N]
-    list_berat[N] = 0
+
+    total_berat = total_berat - list_berat[N-1]
+    list_berat[N-1] = 0 
     N = N - 1
 
-if total_berat <= 650:
-    print(f"\nLift jalan dengan {N} orang. Total berat: {total_berat} kg.")
-    print("Jalankan program lift...")
-else:
-    print("\nLift tidak bisa jalan. Kurangi beban lebih banyak.")
+print("Jalankan program lift.")

@@ -6,7 +6,8 @@ validasi_inputlantai = ""
 listnaikindex =["" for i in range(15)]
 list_inputmentah = ["" for i in range(15)]
 listnaik = [""for i in range(15)]
-listurun = ["" for i in range(15)]
+list_turun = ["" for i in range(15)]
+list_turunindex = ["" for i in range(15)]
 inputlantai = False
 k=0
 posisiSekarang = 0
@@ -19,6 +20,7 @@ validasi_inputlantaiawal = False
 
 while input_lantaiawal == False:
     masukan_lantaiawal = input("Masukkan Lantai awal : ")
+    masukan_lantaiawal = masukan_lantaiawal.upper()
     while cek_indexlantaiawal < len(lantai) and validasi_inputlantaiawal == False:
         if masukan_lantaiawal == lantai[cek_indexlantaiawal]:
             validasi_inputlantaiawal = True
@@ -37,14 +39,19 @@ if (indexLantai > posisiSekarang):
         time.sleep(1)
 else:
     print(f"Lift sudah berada di lantai {lantai[indexLantai]}.")
-
-print("Lift Anda sedang berada di Lantai B. Pintu belakang sudah terbuka.")
+if (indexLantai % 3 == 1):
+    print(f"Lantai {lantai[indexLantai]}. Pintu bagian depan terbuka.")
+    time.sleep(5)
+else:
+    print(f"Lantai {lantai[indexLantai]}. Pintu bagian belakang terbuka.")
+    time.sleep(5)
+    
 # Program cek berat
 #
 #
 #
 #
-
+#Alur Naik
 for l in lantai:
     print("┌───┐", end=" ")
 print()
@@ -76,7 +83,9 @@ while inputlantai <N:
     if validasi_inputlantai == "tidakada": 
         count_databaselantai = 0
         while count_databaselantai < len(lantai) and validasi_inputlantai == "tidakada": # ada lantainya
-            if list_inputmentah[i] == lantai[count_databaselantai]:
+            if list_inputmentah[i] == lantai[indexLantai]:
+                validasi_inputlantai = "lantai_saatini"
+            elif list_inputmentah[i] == lantai[count_databaselantai]:
                 validasi_inputlantai = "dibawahlantaiini"
             else:
                 count_databaselantai += 1
@@ -87,18 +96,27 @@ while inputlantai <N:
         i +=1
         inputlantai +=1
     elif validasi_inputlantai == "dibawahlantaiini": 
-        listurun[indexturun]= list_inputmentah[i]
-        list_inputmentah[i]=""
-        print(f"Lantai {listurun[indexturun]} akan dieksekusi setelah naik sampai lantai 15")
-        count_databaselantai = cek_indexlantaiawal
-        inputlantai+=1
-        indexturun +=1
+        if list_inputmentah[i] in list_turun:
+            list_inputmentah[i]=""
+            print("lantai yang dimasukkan sudah ditekan sebelumnya")
+            inputlantai+=1
+        else:    
+            list_turun[indexturun]= list_inputmentah[i]
+            list_inputmentah[i]=""
+            print(f"Lantai {list_turun[indexturun]} akan dieksekusi setelah naik sampai lantai 15")
+            count_databaselantai = cek_indexlantaiawal
+            inputlantai+=1
+            indexturun +=1
+        print(list_turun)
     elif validasi_inputlantai == "tidakada":
         print("lantai tidak ditemukan")
         count_databaselantai = cek_indexlantaiawal
         list_inputmentah[i]=""
+    elif validasi_inputlantai == "lantai_saatini":
+        print("Lantai yang anda pilih merupakan lantai saat ini")
     else:
         print("lantai yang dimasukkan sudah ditekan sebelumnya.")
+        inputlantai +=1
 index = 0
 #Sort List_inpumentah
 for i in range(len(lantai)):
@@ -113,7 +131,7 @@ for i in range(len(listnaik)):
         listnaikindex[i]=""
     elif listnaik[i] in lantai: 
         listnaikindex[i]=lantai.index(listnaik[i])
-print(listnaikindex[0])
+
 print("Lift mulai bergerak.")
 posisiSekarang = cek_indexlantaiawal
 while listnaikindex[k] != "":
@@ -121,6 +139,114 @@ while listnaikindex[k] != "":
     if (indexLantai > posisiSekarang):
         for i in range(posisiSekarang + 1, indexLantai + 1):
             print(f"Lift naik ke {lantai[i]}.")
+            time.sleep(1)
+    else:
+        print(f"Lift sudah berada di lantai {lantai[indexLantai]}.")
+
+    posisiSekarang = indexLantai
+
+    if (indexLantai ==14):
+        pass
+    elif (indexLantai % 3 == 1):
+        print(f"Lantai {lantai[indexLantai]}. Pintu bagian depan terbuka.")
+        time.sleep(5)
+        print("Pintu bagian depan tertutup.")
+        time.sleep(3)
+    else:
+        print(f"Lantai {lantai[indexLantai]}. Pintu bagian belakang terbuka.")
+        time.sleep(5)
+        print("Pintu bagian belakang tertutup.")
+        time.sleep(3)
+    k+=1
+if posisiSekarang ==14: 
+    print(f"Lantai {lantai[posisiSekarang]}. Pintu bagian belakang terbuka.")
+else: 
+    while posisiSekarang<=14: 
+        print(f"Lift naik ke {lantai[posisiSekarang]}")
+        time.sleep(1)
+        posisiSekarang +=1
+    print(f"Lantai {lantai[posisiSekarang]}. Pintu bagian belakang terbuka.")
+
+
+'''else:
+    print("Lift berbunyi, tolong kurangi beban.")
+    while berat > beratMaks:
+        kurangiBeban = float(input("Masukkan berat yang dikurangi (kg): "))
+        berat -= kurangiBeban
+        if berat > beratMaks:
+            print(f"Lift masih berbunyi, tolong kurangi beban lagi. Beban saat ini : {berat}")
+        else:'''
+#masukkan berat        
+#Tutup pintu
+#Alur Turun
+for l in lantai:
+    print("┌───┐", end=" ")
+print()
+
+for l in lantai:
+    print(f"│{l:^3}│", end=" ")
+print()
+
+for l in lantai:
+    print("└───┘", end=" ")
+print()
+
+i=0
+inputlantai = indexturun
+count_databaselantai = 0
+while inputlantai <N:
+    masukancheck = input("Masukkan lantai : ")
+    masukancheck = masukancheck.upper()
+    if masukancheck in list_turun:
+        pass
+    elif masukancheck == lantai[14]:
+        validasi_inputlantai = "lantai_saatini"
+    else:
+        list_turun[indexturun] = masukancheck
+        list_turun[indexturun] = list_turun[indexturun].upper()
+        validasi_inputlantai = "tidakada"
+    while count_databaselantai-1 < len(lantai) and validasi_inputlantai == "tidakada": #adalantainya
+        if list_turun[indexturun] == lantai[count_databaselantai-1]:
+            validasi_inputlantai = "ada"
+        else:
+            count_databaselantai += 1
+
+    if validasi_inputlantai == "ada":
+        count_databaselantai = 0 
+        validasi_inputlantai = ""
+        inputlantai +=1
+        indexturun +=1
+    elif validasi_inputlantai == "tidakada": 
+        print("Lantai tidak ditemukan")
+        count_databaselantai = 0
+        list_turun[i]=""
+    elif validasi_inputlantai =="lantai_saatini":
+        print("Lantai yang anda pilih merupakan lantai saat ini")
+    else:
+        print("lantai yang dimasukkan sudah ditekan sebelumnya.")
+        inputlantai+=1
+    print(list_turun)
+index = 0
+for i in range(len(lantai)-1,-1,-1):
+    for j in range(len(list_turun)):
+        if list_turun[j] == lantai[i]:
+            list_turunindex[index] = list_turun[j]
+            index += 1
+print("ini",list_turun)
+index =0
+for i in range(len(list_turun)):
+    if list_turunindex[i]=="":
+        list_turunindex[i]=""
+    elif list_turunindex[i] in lantai: 
+        list_turunindex[i]=lantai.index(list_turunindex[i])
+k=0
+print("itu",list_turunindex)
+print("Lift mulai bergerak.")
+while list_turunindex[k] != "":
+    indexLantai = list_turunindex[k]
+    if (indexLantai < posisiSekarang):
+        for i in range(posisiSekarang - 1, indexLantai-1, -1):
+            print(f"Lift turun ke {lantai[i]}.")
             time.sleep(1)
     else:
         print(f"Lift sudah berada di lantai {lantai[indexLantai]}.")
@@ -137,89 +263,4 @@ while listnaikindex[k] != "":
         time.sleep(5)
         print("Pintu bagian belakang tertutup.")
         time.sleep(3)
-    k+=1
-
-else:
-    print("Lift berbunyi, tolong kurangi beban.")
-    while berat > beratMaks:
-        kurangiBeban = float(input("Masukkan berat yang dikurangi (kg): "))
-        berat -= kurangiBeban
-        if berat > beratMaks:
-            print(f"Lift masih berbunyi, tolong kurangi beban lagi. Beban saat ini : {berat}")
-        else:
-            for l in lantai:
-                print("┌───┐", end=" ")
-            print()
-
-            for l in lantai:
-                print(f"│{l:^3}│", end=" ")
-            print()
-
-            for l in lantai:
-                print("└───┘", end=" ")
-            print()
-
-            i=0
-            while inputlantai == False:
-                masukancheck = input("Masukkan lantai : ")
-                if masukancheck in list_inputmentah:
-                    pass
-                else:
-                    list_inputmentah[i] = masukancheck
-                    list_inputmentah[i] = list_inputmentah[i].upper()
-                    validasi_inputlantai = "tidakada"
-                while count_databaselantai < len(lantai) and validasi_inputlantai == "tidakada": #adalantainya
-                    if list_inputmentah[i] == lantai[count_databaselantai]:
-                        validasi_inputlantai = "ada"
-                    else:
-                        count_databaselantai += 1
-                if validasi_inputlantai == "ada":
-                    count_databaselantai = 0 
-                    validasi_inputlantai = ""
-                    selesai = int(input("Apakah sudah selesai (Ketik 1 jika sudah selesai, Ketik 0 jika belum selesai) : "))
-                    print(list_inputmentah)
-                    if selesai == 1:
-                        inputlantai = True
-                    elif selesai ==0:
-                        i += 1
-                elif validasi_inputlantai == "tidakada": 
-                    print("Lantai tidak ditemukan")
-                    count_databaselantai = 0
-                    list_inputmentah[i]=""
-                else:
-                    print("lantai yang dimasukkan sudah ditekan sebelumnya.")
-            index = 0
-            for i in range(len(lantai)):
-                for j in range(len(list_inputmentah)):
-                    if list_inputmentah[j] == lantai[i]:
-                        listnaik[index] = list_inputmentah[j]
-                        index += 1
-            index =0
-            for i in range(len(listnaik)):
-                if listnaik[i]=="":
-                    listnaikindex[i]=""
-                elif listnaik[i] in lantai: 
-                    listnaikindex[i]=lantai.index(listnaik[i])
-            print("Lift mulai bergerak.")
-            while listnaikindex[k] != "":
-                indexLantai = listnaikindex[k]
-                if (indexLantai > posisiSekarang):
-                    for i in range(posisiSekarang + 1, indexLantai + 1):
-                        print(f"Lift naik ke {lantai[i]}.")
-                        time.sleep(1)
-                else:
-                    print(f"Lift sudah berada di lantai {lantai[indexLantai]}.")
-
-                posisiSekarang = indexLantai
-
-                if (indexLantai % 3 == 1):
-                    print(f"Lantai {lantai[indexLantai]}. Pintu bagian depan terbuka.")
-                    time.sleep(5)
-                    print("Pintu bagian depan tertutup.")
-                    time.sleep(3)
-                else:
-                    print(f"Lantai {lantai[indexLantai]}. Pintu bagian belakang terbuka.")
-                    time.sleep(5)
-                    print("Pintu bagian belakang tertutup.")
-                    time.sleep(3)
-                k+=1 
+    k+=1 

@@ -1,17 +1,36 @@
-batas_orang = 8
-berat_maks = 650
+N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
 
-jumlah_orang = int(input("Masukkan jumlah orang yang akan masuk dalam lift: "))
+if N > 8:
+    x = N - 8
+    print(f"Jumlah orang yang tidak bisa masuk lift sebanyak {x}.")
+    N = N - x
 
-if jumlah_orang > batas_orang:
-    print("Jumlah orang melebihi kapasitas lift.")
+i = 1
+list_berat = [0 for i in range(8)]
+
+while i <= N:
+    list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
+    i += 1
+
+total_berat = 0
+i = 0
+while i < N:
+    total_berat = total_berat + list_berat[i]
+    i += 1
+
+while total_berat > 650:
+    print(f"\nTotal berat {total_berat} kg melebihi kapasitas 650 kg.")
+    print(f"Orang ke-{N} dengan berat {list_berat[N-1]} kg dikeluarkan.")
+    N = N - 1
+    
+    total_berat = 0
+    i = 0
+    while i < N:
+        total_berat = total_berat + list_berat[i]
+        i += 1
+
+if total_berat <= 650:
+    print(f"\nLift jalan dengan {N} orang. Total berat: {total_berat} kg.")
+    print("Jalankan program lift...")
 else:
-    berat_total = 0
-    for i in range(1, jumlah_orang + 1):
-        berat_individu = float(input(f"Masukkan berat orang ke-{i} (kg): "))
-        berat_total += berat_individu
-
-    if berat_total > berat_maks:
-        print(f"Beban melebihi kapasitas lift. Total berat = {berat_total} kg, maksimum = {berat_maks} kg")
-    else:
-        print(f"Lift jalan. Total berat = {berat_total} kg")
+    print("\nLift tidak bisa jalan. Kurangi beban lebih banyak.")

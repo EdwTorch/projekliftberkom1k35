@@ -1,17 +1,16 @@
 import time
 lantai = ["B","LG","G","UG","1","2","3","5","7","8","9","10","11","12","15"]
 count_databaselantai = 0
-beratMaks = 1500
 validasi_inputlantai = ""
-listnaikindex =["" for i in range(15)]
+list_berat = [0 for i in range(8)]
+listnaikindex = ["" for i in range(15)]
 list_inputmentah = ["" for i in range(15)]
 listnaik = [""for i in range(15)]
 list_turun = ["" for i in range(15)]
 list_turunindex = ["" for i in range(15)]
 inputlantai = False
-k=0
+k = 0
 posisiSekarang = 0
-N =8
 indexturun = 0
 input_lantaiawal = False
 masukan_lantaiawal = ""
@@ -46,11 +45,40 @@ else:
     print(f"Lantai {lantai[indexLantai]}. Pintu bagian belakang terbuka.")
     time.sleep(5)
     
-# Program cek berat
-#
-#
-#
-#
+# Program input orang dan cek berat
+N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
+
+if N > 8:
+    x = N - 8
+    print(f"Jumlah orang yang tidak bisa masuk lift sebanyak {x}.")
+    N = N - x
+
+i = 1
+while i <= N:
+    list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
+    i += 1
+
+total_berat = 0
+i = 0
+while i < N:
+    total_berat = total_berat + list_berat[i]
+    i += 1
+
+while total_berat > 650:
+    print(f"\nTotal berat {total_berat} kg melebihi kapasitas 650 kg.")
+    print(f"Orang ke-{N} dengan berat {list_berat[N-1]} kg dikeluarkan.")
+
+    total_berat = total_berat - list_berat[N-1]
+    list_berat[N-1] = 0 
+    N = N - 1
+
+print("Jalankan program lift.")
+
+i = 0
+count_databaselantai = 0
+inputlantai = 0
+indexturun = 0
+
 #Alur Naik
 for l in lantai:
     print("┌───┐", end=" ")
@@ -66,7 +94,7 @@ print()
 inputlantai = 0
 i=0
 
-while inputlantai <N:
+while inputlantai < N:
     masukancheck = input("Masukkan lantai : ")
     if masukancheck in list_inputmentah:
         pass

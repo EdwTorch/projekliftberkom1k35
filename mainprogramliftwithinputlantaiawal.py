@@ -1,22 +1,31 @@
 import time
+#Data Rujukan Lantai
 lantai = ["B","LG","G","UG","1","2","3","5","7","8","9","10","11","12","15"]
-count_databaselantai = 0
-validasi_inputlantai = ""
+#Variabel Input Lantai Awal
+cek_indexlantaiawal = 0
+validasi_inputlantaiawal = False
+input_lantaiawal = False
+
+#Cek Berat :
 list_berat = [0 for i in range(8)]
+total_berat = 0
+
+#Validasi Input Lantai Naik dan Input Lantai Naik
+count_databaselantai = 0
+inputlantai = False
+validasi_inputlantai = ""
 listnaikindex = ["" for i in range(15)]
 list_inputmentah = ["" for i in range(15)]
 listnaik = [""for i in range(15)]
+posisiSekarang = 0
+
+#List Turun 
 list_turun = ["" for i in range(15)]
 list_turunindex = ["" for i in range(15)]
-inputlantai = False
-k = 0
-posisiSekarang = 0
-indexturun = 0
-input_lantaiawal = False
-masukan_lantaiawal = ""
-cek_indexlantaiawal = 0
-validasi_inputlantaiawal = False
 list_beratorangturun = ["" for i in range (8)]
+indexturun = 0
+k = 0 #Variabel Manipulasi print
+masukan_lantaiawal = ""
 #Masukan Lantai Awal
 while input_lantaiawal == False: #Validasi Input Lantai
     masukan_lantaiawal = input("Masukkan Lantai awal : ")
@@ -59,7 +68,7 @@ while i <= N:
     list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
     i += 1
 
-total_berat = 0
+#Mengeluarkan orang terakhir yang masuk jika berat lebih dari kapasitas
 i = 0
 while i < N:
     total_berat = total_berat + list_berat[i]
@@ -93,7 +102,7 @@ for l in lantai:
 print()
 inputlantai = 0
 i=0
-
+#Validasi Input Lantai 
 while inputlantai < N:
     masukancheck = input("Masukkan lantai : ")
     if masukancheck in list_inputmentah:
@@ -110,7 +119,7 @@ while inputlantai < N:
             count_databaselantai += 1
     if validasi_inputlantai == "tidakada": 
         count_databaselantai = 0
-        while count_databaselantai < len(lantai) and validasi_inputlantai == "tidakada": # ada lantainya
+        while count_databaselantai < len(lantai) and validasi_inputlantai == "tidakada": # ada lantainya namun tidak diatas lantai saat ini
             if list_inputmentah[i] == lantai[indexLantai]:
                 validasi_inputlantai = "lantai_saatini"
             elif list_inputmentah[i] == lantai[count_databaselantai]:
@@ -161,6 +170,7 @@ for i in range(len(listnaik)):
     elif listnaik[i] in lantai: 
         listnaikindex[i]=lantai.index(listnaik[i])
 
+#Print Lantai mulai naik
 print("Lift mulai bergerak.")
 posisiSekarang = cek_indexlantaiawal
 while listnaikindex[k] != "":
@@ -187,6 +197,7 @@ while listnaikindex[k] != "":
         print("Pintu bagian belakang tertutup.")
         time.sleep(3)
     k+=1
+#Kalo posisi nya udah di lantai 15
 if posisiSekarang ==14: 
     print(f"Lantai {lantai[posisiSekarang]}. Pintu bagian belakang terbuka.")
 else: 
@@ -196,6 +207,7 @@ else:
         posisiSekarang +=1
     print(f"Lantai {lantai[posisiSekarang]}. Pintu bagian belakang terbuka.")
 
+#Input orang sesuai yang tersisa dan sisa tempat
 orang_remain = indexturun 
 N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
 
@@ -240,6 +252,7 @@ print()
 i=0
 inputlantai = indexturun
 count_databaselantai = 0
+#Validasi Input kembali
 while inputlantai <N:
     masukancheck = input("Masukkan lantai : ")
     masukancheck = masukancheck.upper()
@@ -273,20 +286,22 @@ while inputlantai <N:
         inputlantai+=1
     print(list_turun)
 index = 0
+#Sort List_turun agar dari besar ke kecil
 for i in range(len(lantai)-1,-1,-1):
     for j in range(len(list_turun)):
         if list_turun[j] == lantai[i]:
             list_turunindex[index] = list_turun[j]
             index += 1
-print("ini",list_turun)
+
 index =0
+#Mengubah list_turun menjadi index
 for i in range(len(list_turun)):
     if list_turunindex[i]=="":
         list_turunindex[i]=""
     elif list_turunindex[i] in lantai: 
         list_turunindex[i]=lantai.index(list_turunindex[i])
 k=0
-print("itu",list_turunindex)
+
 print("Lift mulai bergerak.")
 while list_turunindex[k] != "":
     indexLantai = list_turunindex[k]

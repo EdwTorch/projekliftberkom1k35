@@ -24,6 +24,7 @@ list_turun = ["" for i in range(15)]
 list_turunindex = ["" for i in range(15)]
 list_beratorangturun = ["" for i in range (8)]
 indexturun = 0
+orang_turun_double = 0
 k = 0 #Variabel Manipulasi print
 masukan_lantaiawal = ""
 #Masukan Lantai Awal
@@ -136,6 +137,7 @@ while inputlantai < N:
         if list_inputmentah[i] in list_turun:
             list_inputmentah[i]=""
             print("lantai yang dimasukkan sudah ditekan sebelumnya")
+            orang_turun_double +=1
             inputlantai+=1
         else:    
             list_turun[indexturun]= list_inputmentah[i]
@@ -208,7 +210,7 @@ else:
     print(f"Lantai {lantai[posisiSekarang]}. Pintu bagian belakang terbuka.")
 
 #Input orang sesuai yang tersisa dan sisa tempat
-orang_remain = indexturun 
+orang_remain = indexturun +orang_turun_double
 N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
 
 if N+orang_remain > 8:

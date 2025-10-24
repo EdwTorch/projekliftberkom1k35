@@ -185,7 +185,8 @@ while listnaikindex[k] != "":
     else:
         print(f"Lift sudah berada di lantai {lantai[indexLantai]}.")
 
-    posisiSekarang = indexLantai
+    posisiSekarang = indexLantai  #halo ini test 
+
 
     if (indexLantai ==14):
         pass

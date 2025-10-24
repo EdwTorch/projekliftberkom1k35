@@ -29,6 +29,7 @@ k = 0 #Variabel Manipulasi print
 masukan_lantaiawal = ""
 #Masukan Lantai Awal
 while input_lantaiawal == False: #Validasi Input Lantai
+    print(lantai)
     masukan_lantaiawal = input("Masukkan Lantai awal : ")
     masukan_lantaiawal = masukan_lantaiawal.upper()
     while cek_indexlantaiawal < len(lantai) and validasi_inputlantaiawal == False: #Cek Inputan apakah ada dalam database

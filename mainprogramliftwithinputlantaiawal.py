@@ -1,3 +1,21 @@
+"""
+Nama Program: Lift 
+
+Nama/NIM Anggota Kelompok:
+Khasya Nurul Amini/19625007
+Kezia Josephine Manik/19625015
+Raya Medina Farrelin/19625183
+Edward Terrance Lie/19625187
+
+Deskripsi:
+Program cara kerja lift. Terdapat 15 lantai, penamaan masing-masing lantai dapat diilihat dalam kamus. Untuk urutan lantai kelipatan 3n+1, pintu bagian depan terbuka.
+Ketika program pertama kali dimulai, user menetapkan lantai awal. Kemudian, user menetapkan orang yang akan masuk ke dalam lift. 
+Kapasitas lift sebanyak 8 orang. Apabila jumlah orang yang akan masuk ke dalam lift lebih dari 8 orang, program akan memberitahu jumlah orang yang tidak bisa masuk.
+Kapasitas berat lift adalah 650 kg. Program akan menginput berat masing-masing orang yang akan masuk. Apabila lift melebihi kapasitas maksimum, orang yang terakhir masuk akan keluar sampai tidak melebihi kapasitas berat maksimum.
+Masing-masing orang akan menginput lantai yang akan dituju. Ketika menginput lantai, program akan memvalidasi keberadaan lantai tersebut. Apabila lantai yang diinput tidak ada, program akan memberitahu user.
+Apabila lantai yang dituju telah diinput, program akan memberitahu bahwa tombol lantai telah ditekan sebelumnya.
+Setelah itu, lift akan beroperasi dengan bergerak ke atas sampai mencapai lantai paling atas yang telah diinput. Kemudian, lift akan bergerak ke bawah sesuai input user.
+"""
 import time
 #Data Rujukan Lantai
 lantai = ["B","LG","G","UG","1","2","3","5","7","8","9","10","11","12","15"]

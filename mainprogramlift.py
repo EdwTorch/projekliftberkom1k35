@@ -1,7 +1,7 @@
 import time
 lantai = ["B","LG","G","UG","1","2","3","5","7","8","9","10","11","12","15"]
 count_databaselantai = 0
-beratMaks = 1500
+beratMaks = 650
 validasi_inputlantai = ""
 listnaikindex =["" for i in range(15)]
 list_inputmentah = ["" for i in range(15)]

@@ -14,35 +14,39 @@ Kapasitas lift sebanyak 8 orang. Apabila jumlah orang yang akan masuk ke dalam l
 Kapasitas berat lift adalah 650 kg. Program akan menginput berat masing-masing orang yang akan masuk. Apabila lift melebihi kapasitas maksimum, orang yang terakhir masuk akan keluar sampai tidak melebihi kapasitas berat maksimum.
 Masing-masing orang akan menginput lantai yang akan dituju. Ketika menginput lantai, program akan memvalidasi keberadaan lantai tersebut. Apabila lantai yang diinput tidak ada, program akan memberitahu user.
 Apabila lantai yang dituju telah diinput, program akan memberitahu bahwa tombol lantai telah ditekan sebelumnya.
-Setelah itu, lift akan beroperasi dengan bergerak ke atas sampai mencapai lantai paling atas yang telah diinput. Kemudian, lift akan bergerak ke bawah sesuai input user.
+Lift akan membuka pintu untuk setiap lantai yang sudah diinput. 
+Setelah itu, lift akan beroperasi dengan bergerak ke atas sampai mencapai lantai paling atas yang telah diinput. 
+Sebelum lift akan turun, lift akan meminta masukan orang beserta masing-masing berat badannya. 
+Kemudian, lift akan bergerak ke bawah sesuai input user.
+
 
 Kamus : 
-lantai:str
-cek_indexlantaiawal:int
-validasi_inputlantaiawal:bool
-input_lantaiawal:bool
-list_berat:list
-total_berat:float
-count_databaselantai:int
-inputlantai:int
-validasi_inputlantai:str
-listnaikindex:list
-list_inputmentah:list
-listnaik:list
-posisiSekarang:int
-list_turun:list
-list_turunindex:list
-list_beratorangturun:list
-indexturun:int
-orang_turun_double:int
-k:int
-masukan_lantaiawal:str
-indexLantai:int
-N:int
-i:int
-indexturunindex:int
-index:int
-orang_remain:int
+lantai: str
+cek_indexlantaiawal: int
+validasi_inputlantaiawal: bool
+input_lantaiawal: bool
+list_berat: list of float
+total_berat: float
+count_databaselantai: int
+inputlantai: int
+validasi_inputlantai: str
+listnaikindex: list of int
+list_inputmentah: list of string 
+listnaik: list of string
+posisiSekarang: int
+list_turun: list of string
+list_turunindex: list of int
+list_beratorangturun: list of float
+indexturun: int
+orang_turun_double: int
+k: int
+masukan_lantaiawal: str
+indexLantai: int
+N: int
+i: int
+indexturunindex: int
+index: int
+orang_remain: int
 """
 
 import time 
@@ -59,7 +63,7 @@ total_berat = 0
 
 #Validasi Input Lantai Naik dan Input Lantai Naik
 count_databaselantai = 0
-inputlantai = False
+inputlantai = int
 validasi_inputlantai = ""
 listnaikindex = ["" for i in range(15)]
 list_inputmentah = ["" for i in range(15)]

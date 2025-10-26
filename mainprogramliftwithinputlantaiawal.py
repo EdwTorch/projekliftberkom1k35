@@ -17,9 +17,35 @@ Apabila lantai yang dituju telah diinput, program akan memberitahu bahwa tombol 
 Setelah itu, lift akan beroperasi dengan bergerak ke atas sampai mencapai lantai paling atas yang telah diinput. Kemudian, lift akan bergerak ke bawah sesuai input user.
 
 Kamus : 
-
+lantai:str
+cek_indexlantaiawal:int
+validasi_inputlantaiawal:bool
+input_lantaiawal:bool
+list_berat:list
+total_berat:float
+count_databaselantai:int
+inputlantai:int
+validasi_inputlantai:str
+listnaikindex:list
+list_inputmentah:list
+listnaik:list
+posisiSekarang:int
+list_turun:list
+list_turunindex:list
+list_beratorangturun:list
+indexturun:int
+orang_turun_double:int
+k:int
+masukan_lantaiawal:str
+indexLantai:int
+N:int
+i:int
+indexturunindex:int
+index:int
+orang_remain:int
 """
-import time
+
+import time 
 #Data Rujukan Lantai
 lantai = ["B","LG","G","UG","1","2","3","5","7","8","9","10","11","12","15"]
 #Variabel Input Lantai Awal

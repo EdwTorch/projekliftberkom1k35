@@ -182,7 +182,7 @@ while inputlantai < N:
     masukancheck = input("Masukkan lantai : ")
     
     if masukancheck in list_inputmentah:
-        pass 
+        validasi_inputlantai = "" 
     
     else:
         list_inputmentah[i] = masukancheck
@@ -361,7 +361,7 @@ while inputlantai <N:
     masukancheck = masukancheck.upper()
     
     if masukancheck in list_turun:
-        pass
+        validasi_inputlantai = ""
     
     elif masukancheck == lantai[posisiSekarang]:
         validasi_inputlantai = "lantai_saatini"

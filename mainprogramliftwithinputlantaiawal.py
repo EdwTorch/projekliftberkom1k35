@@ -78,7 +78,10 @@ if N > 8:
 i = 1
 while i <= N:
     list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
-    i += 1
+    if list_berat[i - 1] <= 0:
+        print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
+    else:
+        i += 1
 
 #Mengeluarkan orang terakhir yang masuk jika berat lebih dari kapasitas
 i = 0
@@ -226,7 +229,10 @@ else:
 i = indexturun
 while i < N:
     list_beratorangturun[i] = float(input(f"Masukkan berat orang ke-{i+1} (kg): "))
-    i += 1
+    if list_beratorangturun[i] <= 0:
+        print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
+    else:
+        i += 1
 
 total_berat = 0
 i = 0

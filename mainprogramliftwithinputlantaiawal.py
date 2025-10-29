@@ -312,8 +312,16 @@ while listnaikindex[k] != "":
 
 #Input orang sesuai yang tersisa dan sisa tempat
 orang_remain = indexturun + orang_turun_double
-N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
-
+validasi_inputorang = False
+while validasi_inputorang == False: 
+    try: 
+        N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
+        if N <= 0: 
+            print("Jumlah orang harus lebih dari 0.")
+        else: 
+            validasi_inputorang = True
+    except: 
+        print("Masukan tidak valid. Silahkan masukkan angka.")
 if N + orang_remain > 8:
     x = N + orang_remain - 8
     print(f"Jumlah orang yang tidak bisa masuk lift sebanyak {x}.")

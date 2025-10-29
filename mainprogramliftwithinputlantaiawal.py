@@ -190,7 +190,7 @@ print()
 
 #Validasi Input Lantai 
 while inputlantai < N:
-    masukancheck = input(f"Masukkan lantai orang ke-{i+1} : ")
+    masukancheck = input(f"Masukkan lantai untuk orang ke-{inputlantai+1} : ")
     
     if masukancheck in list_inputmentah:
         validasi_inputlantai = "" 
@@ -371,7 +371,7 @@ count_databaselantai = 0
 #Validasi Input kembali
 
 while inputlantai < N:
-    masukancheck = input(f"Masukkan lantai untuk orang ke-{i+1} : ")
+    masukancheck = input(f"Masukkan lantai untuk orang ke-{inputlantai+1} : ")
     masukancheck = masukancheck.upper()
     
     if masukancheck in list_turun:

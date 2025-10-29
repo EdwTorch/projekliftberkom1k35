@@ -129,7 +129,6 @@ else:
     
 # Program input orang dan cek berat
 validasi_inputorang = False
-<<<<<<< Updated upstream
 while validasi_inputorang == False: 
     try: 
         N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
@@ -139,14 +138,6 @@ while validasi_inputorang == False:
             validasi_inputorang = True
     except: 
         print("Masukan tidak valid. Silahkan masukkan angka.")
-=======
-while validasi_inputorang == False:
-    try: 
-        N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
-        validasi_inputorang =  True
-    except: 
-        print("masukan harus berupa angka")
->>>>>>> Stashed changes
 
 if N > 8: #Mengurangi kelebihan kapasitas maksimum lift
     x = N - 8

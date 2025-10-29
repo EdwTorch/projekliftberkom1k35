@@ -408,7 +408,7 @@ while inputlantai < N:
             print("Lantai yang dimasukkan berada di atas lantai ini. Lift hanya bisa turun ke lantai bawah.")
             list_turun[indexturun]=""
             validasi_inputlantai = ""
-        
+            count_databaselantai = 0
         else:
             validasi_inputlantai = ""
             inputlantai +=1

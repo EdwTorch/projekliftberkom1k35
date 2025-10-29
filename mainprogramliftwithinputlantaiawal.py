@@ -19,7 +19,6 @@ Setelah itu, lift akan beroperasi dengan bergerak ke atas sampai mencapai lantai
 Sebelum lift akan turun, lift akan meminta masukan orang beserta masing-masing berat badannya. 
 Kemudian, lift akan bergerak ke bawah sesuai input user.
 
-
 Kamus : 
 lantai: str
 cek_indexlantaiawal: int
@@ -129,7 +128,16 @@ else:
     time.sleep(5)
     
 # Program input orang dan cek berat
-N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
+validasi_inputorang = False
+while validasi_inputorang == False: 
+    try: 
+        N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
+        if N <= 0: 
+            print("Jumlah orang harus lebih dari 0.")
+        else: 
+            validasi_inputorang = True
+    except: 
+        print("Masukan tidak valid. Silahkan masukkan angka.")
 
 if N > 8: #Mengurangi kelebihan kapasitas maksimum lift
     x = N - 8
@@ -138,11 +146,14 @@ if N > 8: #Mengurangi kelebihan kapasitas maksimum lift
 
 i = 1
 while i <= N:
-    list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
-    if list_berat[i - 1] <= 0:
-        print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
-    else:
-        i += 1
+    try: 
+        list_berat[i - 1] = float(input(f"Masukkan berat orang ke-{i} (kg): "))
+        if list_berat[i - 1] <= 0:
+            print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
+        else:
+            i += 1
+    except: 
+        print("Masukan tidak valid. Silahkan masukan angka.")
 
 #Mengeluarkan orang terakhir yang masuk jika berat lebih dari kapasitas
 i = 0
@@ -300,13 +311,13 @@ while listnaikindex[k] != "":
     k+=1
 
 #Input orang sesuai yang tersisa dan sisa tempat
-orang_remain = indexturun +orang_turun_double
+orang_remain = indexturun + orang_turun_double
 N = int(input("Masukkan jumlah orang yang akan masuk ke lift: "))
 
-if N+orang_remain > 8:
-    x = N+orang_remain - 8
+if N + orang_remain > 8:
+    x = N + orang_remain - 8
     print(f"Jumlah orang yang tidak bisa masuk lift sebanyak {x}.")
-    N = N +orang_remain- x
+    N = N + orang_remain - x
 
 else:
     N = N + orang_remain
@@ -314,11 +325,14 @@ else:
 i = indexturun
 
 while i < N: # input berat orang yang baru masuk
-    list_beratorangturun[i] = float(input(f"Masukkan berat orang ke-{i+1} (kg): "))
-    if list_beratorangturun[i] <= 0:
-        print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
-    else:
-        i += 1
+    try: 
+        list_beratorangturun[i] = float(input(f"Masukkan berat orang ke-{i+1} (kg): "))
+        if list_beratorangturun[i] <= 0:
+            print("Berat yang anda masukkan tidak valid. Silahkan input ulang.")
+        else:
+            i += 1
+    except: 
+        print("Masukan tidak valid. Silahkan masukkan angka.")
 
 total_berat = 0
 i = 0
@@ -351,12 +365,12 @@ for l in lantai:
     print("└───┘", end=" ")
 print()
 
-i=0
+i = 0
 inputlantai = indexturun
 count_databaselantai = 0
 #Validasi Input kembali
 
-while inputlantai <N:
+while inputlantai < N:
     masukancheck = input("Masukkan lantai : ")
     masukancheck = masukancheck.upper()
     
